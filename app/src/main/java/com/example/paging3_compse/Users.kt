@@ -57,22 +57,33 @@ fun UserList(viewModel: MainViewModel) {
         }
 
 
-        // to show progressbar in center when first 10 items are fetching
-        when (userList.loadState.refresh) {
-            is LoadState.NotLoading -> Unit
-            LoadState.Loading -> {
-                item {
-
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Center) {
-                        CircularProgressIndicator()
-                    }
-                }
-            }
-
-            is LoadState.Error -> Unit // do nothing
-        }
+        // to show progressbar in top when first 10 items are fetching
+//        when (userList.loadState.refresh) {
+//            is LoadState.NotLoading -> Unit
+//            LoadState.Loading -> {
+//                item {
+//                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Center) {
+//                        CircularProgressIndicator()
+//                    }
+//                }
+//            }
+//            is LoadState.Error -> Unit // do nothing
+//        }
 
     }
+
+    // to show progressbar in center when first 10 items are fetching
+    when (userList.loadState.refresh) {
+        is LoadState.NotLoading -> Unit
+        LoadState.Loading -> {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Center) {
+                    CircularProgressIndicator()
+                }
+        }
+
+        is LoadState.Error -> Unit // do nothing
+    }
+
 
 
 }
